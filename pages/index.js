@@ -14,6 +14,10 @@ export default function Home() {
 			alert("copy to pasteboard");
 
 			copyToClipboard(pasteboardItems);
+
+			return () => {
+				copyToClipboard("");
+			};
 		});
 	}, []);
 
