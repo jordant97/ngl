@@ -5,24 +5,23 @@ export default function Home() {
 		toDataURL(
 			"https://images.unsplash.com/photo-1606567595334-d39972c85dbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YmlyZHxlbnwwfHwwfHw%3D&w=1000&q=80"
 		).then((dataUrl) => {
-			let pasteboardItems = [
-				{ "com.instagram.sharedSticker.backgroundImage": dataUrl },
-				{ "com.instagram.sharedSticker.backgroundTopColor": "#ff0000" },
-				{ "com.instagram.sharedSticker.backgroundBottomColor": "#00ff00" },
-			];
-
-			alert("copy to pasteboard");
+			let pasteboardItems = {
+				"com.instagram.sharedSticker.backgroundImage": dataUrl,
+				"com.instagram.sharedSticker.backgroundTopColor": "#ff0000",
+				"com.instagram.sharedSticker.backgroundBottomColor": "#00ff00",
+			};
 
 			copyToClipboard(pasteboardItems);
 
-			return () => {
-				copyToClipboard("");
-			};
+			// return () => {
+			// 	copyToClipboard("");
+			// };
 		});
 	}, []);
 
 	const copyToClipboard = (textToCopy) => {
 		navigator.clipboard.writeText(textToCopy);
+		alert("copy to pasteboard");
 	};
 
 	const toDataURL = (url) =>
